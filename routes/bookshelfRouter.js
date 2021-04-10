@@ -22,4 +22,34 @@ bookshelfRouter
     res.end('Deleted entire shelf. Are you sure you wanted to do that?!')
   })
 
+bookshelfRouter
+  .route('/:bookId')
+  // .all((req, res) => {
+  //   res.statusCode = 200
+  //   res.setHeader('Content-Type', 'text/plain')
+  //   next()
+  // })
+  .get((req, res) => {
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'text/plain')
+    res.end(`Will send book Id #${req.params.bookId} to you.`)
+  })
+  .post((req, res) => {
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'text/plain')
+    res.end(`Will add the book: ${req.body.name}`)
+  })
+  .put((req, res) => {
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'text/plain')
+    res.end(
+      `Will update the book Id #${req.params.bookId} with info like its name: ${req.body.name}`
+    )
+  })
+  .delete((req, res) => {
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'text/plain')
+    res.end(`Deleted book ${req.params.bookId} with name of ${req.body.name}`)
+  })
+
 module.exports = bookshelfRouter
